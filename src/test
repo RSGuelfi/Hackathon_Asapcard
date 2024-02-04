@@ -1,0 +1,70 @@
+/* este arquivo lẽ o arquivo .csv e retorna ele no formato JSON
+
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"time"
+)
+
+type Pessoa struct {
+	IDTransacao   string    `json:"id_transacao"`
+	DataTransacao time.Time `json:"data_transacao"`
+	Documento     int       `json:"documento"`
+	Nome          string    `json:"nome"`
+	Idade         int       `json:"idade"`
+	Valor         float64   `json:"valor"`
+	NumParcelas   int       `json:"num_parcelas"`
+}
+
+// Pessoa representa a estrutura dos dados do CSV
+type Pessoa struct {
+	IDTransacao string `json:"id_transacao"`
+	// Adicione outros campos conforme necessário
+}
+
+func main() {
+	// Abrir o arquivo CSV para leitura
+	file, err := os.Open("seu_arquivo.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	// Criar um leitor CSV
+	reader := csv.NewReader(file)
+
+	// Ler todas as linhas do arquivo
+	lines, err := reader.ReadAll()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Iterar sobre as linhas e criar mensagens JSON
+	for _, line := range lines {
+		// Seu critério de parse aqui
+		if len(line) >= 1 {
+			// Criar uma instância da estrutura Pessoa
+			pessoa := Pessoa{
+				IDTransacao: line[0],
+				// Adicione outros campos conforme necessário
+			}
+
+			// Converter a estrutura para JSON
+			jsonData, err := json.Marshal(pessoa)
+			if err != nil {
+				log.Println("Erro ao converter para JSON:", err)
+				continue
+			}
+
+			// Imprimir a mensagem JSON (ou publicar onde necessário)
+			fmt.Println(string(jsonData))
+		}
+	}
+}
+
+*/
